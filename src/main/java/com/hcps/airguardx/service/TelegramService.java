@@ -17,20 +17,19 @@ public class TelegramService {
 
         // telegram api token
         String apiToken = System.getenv("TEL_API_KEY");
-        System.out.println(apiToken);
 
         // chatId of group chat
         String chatId = "-935276159";
 
-//        urlString = String.format(urlString, apiToken, chatId, text);
-//
-//        try {
-//            URL url = new URL(urlString);
-//            URLConnection conn = url.openConnection();
-//            InputStream is = new BufferedInputStream(conn.getInputStream());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        urlString = String.format(urlString, apiToken, chatId, text);
+
+        try {
+            URL url = new URL(urlString);
+            URLConnection conn = url.openConnection();
+            InputStream is = new BufferedInputStream(conn.getInputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

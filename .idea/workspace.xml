@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bce7ae3-481b-44e4-adc0-2a24cf089cc0" name="Changes" comment="INIT">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hcps/airguardx/service/TelegramService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcps/airguardx/controller/ParameterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcps/airguardx/controller/ParameterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+    <list default="true" id="6bce7ae3-481b-44e4-adc0-2a24cf089cc0" name="Changes" comment="ADD: telegram test">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcps/airguardx/service/TelegramService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcps/airguardx/service/TelegramService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +94,7 @@
       <updated>1683453046297</updated>
       <workItem from="1683453048243" duration="5000" />
       <workItem from="1683453074179" duration="7800000" />
-      <workItem from="1683480001688" duration="4643000" />
+      <workItem from="1683480001688" duration="5043000" />
     </task>
     <task id="LOCAL-00001" summary="INIT">
       <created>1683461096225</created>
@@ -107,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683461096225</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ADD: telegram test">
+      <created>1683489484165</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683489484165</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,6 +118,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="INIT" />
-    <option name="LAST_COMMIT_MESSAGE" value="INIT" />
+    <MESSAGE value="ADD: telegram test" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADD: telegram test" />
   </component>
 </project>

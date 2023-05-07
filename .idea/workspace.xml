@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bce7ae3-481b-44e4-adc0-2a24cf089cc0" name="Changes" comment="INIT">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hcps/airguardx/controller/ParameterController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hcps/airguardx/service/ParameterService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scripts/jQuery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scripts/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hcps/airguardx/service/TelegramService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcps/airguardx/controller/GetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcps/airguardx/controller/IndexPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcps/airguardx/controller/ParameterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcps/airguardx/controller/ParameterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +24,8 @@
       <list>
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="Class" />
         <option value="JavaScript File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -74,11 +70,17 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
     <configuration name="AirguardxApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <envs>
+        <env name="TEL_API_KEY" value="5939618689:AAHz_oqLkfaw66wmFukLy7Crl7J8s-DOAdM" />
+      </envs>
       <module name="airguardx" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.hcps.airguardx.AirguardxApplication" />
       <method v="2">
@@ -96,6 +98,7 @@
       <updated>1683453046297</updated>
       <workItem from="1683453048243" duration="5000" />
       <workItem from="1683453074179" duration="7800000" />
+      <workItem from="1683480001688" duration="4643000" />
     </task>
     <task id="LOCAL-00001" summary="INIT">
       <created>1683461096225</created>

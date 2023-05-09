@@ -40,48 +40,110 @@
     <!-- Navigation End -->
 
     <div class="container bg-white rounded-3 my-3 p-3">
-        <h2>Innenraum</h2>
+        <h2>Innen</h2>
         <div class="row mx-auto">
             <div class="col-sm-4 py-4">
                 <div class="p-2 border border-2 rounded-2 position-relative">
-                    <p class="text-center text-secondary">Luftfeuchtigkeit</p>
+                    <p class="text-center text-secondary fw-bold">Luftfeuchtigkeit</p>
                     <i class="bi bi-emoji-smile-fill text-success position-absolute"></i>
                     <div class="progress">
                         <div class="progress-bar progress-bar--green" role="progressbar" style="width: 40%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <p class="text-center text-success">40%</p>
+                    <div class="d-flex justify-content-between">
+                        <p class="text-secondary">0%</p>
+                        <p class="text-success">40%</p>
+                        <p class="text-secondary">100%</p>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-4 py-4">
                 <div class="p-2 border border-2 rounded-2 position-relative">
-                    <p class="text-center text-secondary">Luftfeuchtigkeit</p>
+                    <p class="text-center text-secondary fw-bold">Luftfeuchtigkeit</p>
                     <i class="bi bi-emoji-neutral-fill color-orange position-absolute"></i>
                     <div class="progress">
                         <div class="progress-bar progress-bar--warning" role="progressbar" style="width: 65%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <p class="text-center color-orange">65%</p>
+                    <div class="d-flex justify-content-between">
+                        <p class="text-secondary">0%</p>
+                        <p class="color-orange">65%</p>
+                        <p class="text-secondary">100%</p>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-4 py-4">
                 <div class="p-2 border border-2 rounded-2 position-relative">
-                    <p class="text-center text-secondary">Luftfeuchtigkeit</p>
+                    <p class="text-center text-secondary fw-bold">Luftfeuchtigkeit</p>
                     <i class="bi bi-emoji-frown-fill text-danger position-absolute"></i>
                     <div class="progress">
                         <div class="progress-bar progress-bar--danger" role="progressbar" style="width: 90%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <p class="text-center text-danger">90%</p>
+                    <div class="d-flex justify-content-between">
+                        <p class="text-secondary">0%</p>
+                        <p class="text-danger">90%</p>
+                        <p class="text-secondary">100%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-sm-4 py-4">
+                <div class="p-2 border border-2 rounded-2 position-relative">
+                    <p class="text-center text-secondary fw-bold">Temperatur</p>
+                    <i class="bi bi-emoji-smile-fill text-success position-absolute"></i>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar--green" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <p class="text-secondary">-20°</p>
+                        <p class="text-success">20°</p>
+                        <p class="text-secondary">60°</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 py-4">
+                <div class="p-2 border border-2 rounded-2 position-relative">
+                    <p class="text-center text-secondary fw-bold">Temperatur</p>
+                    <i class="bi bi-emoji-neutral-fill color-orange position-absolute"></i>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar--warning" role="progressbar" style="width: 60%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <p class="text-secondary">-20°</p>
+                        <p class="color-orange">27°</p>
+                        <p class="text-secondary">60°</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 py-4">
+                <div class="p-2 border border-2 rounded-2 position-relative">
+                    <p class="text-center text-secondary fw-bold">Temperatur</p>
+                    <i class="bi bi-emoji-frown-fill text-danger position-absolute"></i>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar--danger" role="progressbar" style="width: 70%" aria-valuenow="50" aria-valuemin="-20" aria-valuemax="50"></div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <p class="text-secondary">-20°</p>
+                        <p class="text-danger">40°</p>
+                        <p class="text-secondary">60°</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="container bg-white rounded-3 my-3 p-3">
+        <h2>Außen</h2>
+        <div>
+            <p><i class="bi bi-sunrise-fill sun"></i> <span id="sunrise"></span></p>
+            <p><i class="bi bi-sunset-fill sun"></i> <span id="sunset"></span></p>
+        </div>
         <div>
             <i class="bi bi-brightness-high-fill sun"></i>
             <i class="bi bi-droplet-fill text-primary"></i>
-            <i class="bi bi-sunrise-fill"></i>
-            <i class="bi bi-sunset-fill"></i>
             <i class="bi bi-wind"></i>
+            <i class="bi bi-thermometer"></i>
+            <i class="bi bi-thermometer-half"></i>
+            <i class="bi bi-thermometer-high"></i>
         </div>
         <p th:text="${name}"></p>
         <input id="name-input" type="text" class="form-control mb-2" placeholder="Nachricht" aria-label="Nachricht" aria-describedby="basic-addon1">

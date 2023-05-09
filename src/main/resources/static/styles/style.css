@@ -1,3 +1,30 @@
-h1 {
-    color: grey;
+html, body.body {
+    background-color: #E9EDF1;
+}
+
+.sun {
+    color: #E5B262;
+}
+
+i {
+    line-height: 1;
+    top: 5px;
+    right: 5px;
+    font-size: 25px;
+}
+
+.progress-bar--green {
+    background-color: #198754 !important;
+}
+
+.progress-bar--warning {
+    background-color: #fd7e14 !important;
+}
+
+.progress-bar--danger {
+    background-color: #dc3545 !important;
+}
+
+.color-orange {
+    color: #fd7e14;
 }

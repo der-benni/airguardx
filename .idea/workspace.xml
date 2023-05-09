@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bce7ae3-481b-44e4-adc0-2a24cf089cc0" name="Changes" comment="ADD: App Icon and Frontend" />
+    <list default="true" id="6bce7ae3-481b-44e4-adc0-2a24cf089cc0" name="Changes" comment="ADD: App Icon and Frontend">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-develop.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scripts/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/scripts/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,6 +85,7 @@
   </component>
   <component name="RunManager">
     <configuration name="AirguardxApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" value="develop" />
       <envs>
         <env name="TEL_API_KEY" value="5939618689:AAHz_oqLkfaw66wmFukLy7Crl7J8s-DOAdM" />
       </envs>
@@ -102,6 +109,7 @@
       <workItem from="1683480001688" duration="5293000" />
       <workItem from="1683568961806" duration="8294000" />
       <workItem from="1683615875933" duration="4411000" />
+      <workItem from="1683655190065" duration="4952000" />
     </task>
     <task id="LOCAL-00001" summary="INIT">
       <created>1683461096225</created>

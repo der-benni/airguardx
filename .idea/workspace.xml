@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bce7ae3-481b-44e4-adc0-2a24cf089cc0" name="Changes" comment="CHG: telegram integrated">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/icon/apple-touch-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/icon/favicon-16x16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/icon/favicon-32x32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/icon/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/styles/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="6bce7ae3-481b-44e4-adc0-2a24cf089cc0" name="Changes" comment="ADD: App Icon and Frontend" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -110,7 +101,7 @@
       <workItem from="1683453074179" duration="7800000" />
       <workItem from="1683480001688" duration="5293000" />
       <workItem from="1683568961806" duration="8294000" />
-      <workItem from="1683615875933" duration="4102000" />
+      <workItem from="1683615875933" duration="4411000" />
     </task>
     <task id="LOCAL-00001" summary="INIT">
       <created>1683461096225</created>
@@ -133,16 +124,35 @@
       <option name="project" value="LOCAL" />
       <updated>1683489779479</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ADD: App Icon and Frontend">
+      <created>1683633050268</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683633050268</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="INIT" />
     <MESSAGE value="ADD: telegram test" />
     <MESSAGE value="CHG: telegram integrated" />
-    <option name="LAST_COMMIT_MESSAGE" value="CHG: telegram integrated" />
+    <MESSAGE value="ADD: App Icon and Frontend" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADD: App Icon and Frontend" />
   </component>
 </project>

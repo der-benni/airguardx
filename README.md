@@ -1,13 +1,13 @@
 # airguardx
 HCPS Projekt
 
-## GIThub
+## Github
 [GIThub](https://github.com/der-benni/airguardx)
 
-## Webserver-Adresse (äffentlich)
+## Webserver-Adresse (öffentlich)
 [Webserver](http://141.147.6.122:8080)
 
-## Lokal Webserver starten
+## Lokaler Webserver
 [Lokal](http://localhost:8080)
 
 ## Icons (für Frontend)

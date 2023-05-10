@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,7 +24,7 @@ public class TelegramService {
         // chatId of group chat
         String chatId = "-935276159";
 
-        urlString = String.format(urlString, apiToken, chatId, text);
+        urlString = String.format(urlString, apiToken, chatId, URLEncoder.encode(text, StandardCharsets.UTF_8));
 
         try {
             URL url = new URL(urlString);

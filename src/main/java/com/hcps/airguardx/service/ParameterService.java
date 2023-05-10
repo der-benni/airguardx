@@ -5,14 +5,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class ParameterService {
 
-    private String name = null;
+    // todo: push data to database
 
-    public String getName() {
-        return this.name;
+    private Object data = null;
+
+    public Object getParameters() {
+        return this.data;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setParameters(Object data) {
+        this.data = data;
     }
 
 }

@@ -1,0 +1,10 @@
+Beispiel-Code zum Übertragen der Sensor-Daten vom Raspberry Pi an den Web-Server mittels HTTP Post Request. Die Daten werden als JSON-String übertragen:
+
+import requests
+url = 'http://141.147.6.122:8080/parameters'
+jsonData = {'temperatur':25.5,'humidity':40,'gas':0.5}
+x = requests.post(url, json = jsonData)
+print(x.text)
+
+
+Die jeweils zuletzt gesendeten Daten können per GET-Request oder über den Browser unter http://141.147.6.122:8080/parameters abgefragt werden.

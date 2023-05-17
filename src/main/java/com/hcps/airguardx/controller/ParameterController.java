@@ -1,12 +1,11 @@
 package com.hcps.airguardx.controller;
 
+import com.hcps.airguardx.model.ParameterModel;
 import com.hcps.airguardx.service.ParameterService;
+import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ParameterController {
@@ -18,21 +17,24 @@ public class ParameterController {
     }
 
     @PostMapping("/parameters")
-    public ResponseEntity<Object> setParameters(@RequestBody Object data) {
+    public ResponseEntity<Object> setParameters(@RequestBody String data) {
 
-        System.out.println(data);
-        parameterService.setParameters(data);
+        JSONObject obj = new JSONObject(data);
 
-        return new ResponseEntity<>("Success: " + data, HttpStatus.OK);
+        ParameterModel model = new ParameterModel();
+        model.setTemperature(obj.getFloat("temperature"));
+        model.setHumidity(obj.getFloat("humidity"));
+        model.setVoc(obj.getFloat("voc"));
+        model.setCo2(obj.getFloat("co2"));
+
+        parameterService.setParameters(model);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/parameters")
-    public ResponseEntity<Object> getParameters() {
-
-        Object data = parameterService.getParameters();
-        System.out.println(data);
-
-        return new ResponseEntity<>(data, HttpStatus.OK);
+    public @ResponseBody Iterable<ParameterModel> getParameters() {
+        return parameterService.getParameters();
     }
 
 }

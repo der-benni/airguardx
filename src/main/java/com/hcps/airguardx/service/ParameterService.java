@@ -1,20 +1,24 @@
 package com.hcps.airguardx.service;
 
+import com.hcps.airguardx.model.ParameterModel;
+import com.hcps.airguardx.repository.ParameterRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ParameterService {
 
-    // todo: push data to database
+    private final ParameterRepository parameterRepository;
 
-    private Object data = null;
-
-    public Object getParameters() {
-        return this.data;
+    public ParameterService(ParameterRepository parameterRepository) {
+        this.parameterRepository = parameterRepository;
     }
 
-    public void setParameters(Object data) {
-        this.data = data;
+    public Iterable<ParameterModel> getParameters() {
+        return parameterRepository.findAll();
+    }
+
+    public void setParameters(ParameterModel data) {
+        parameterRepository.save(data);
     }
 
 }

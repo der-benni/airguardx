@@ -14,11 +14,15 @@ public class ParameterModel {
 
     private float temperature;
 
+    private float gas;
+
     private float humidity;
 
-    private float voc;
+    private float relative_humidity;
 
-    private float co2;
+    private float pressure;
+
+    private float altitude;
 
     public Integer getId() {
         return id;
@@ -36,6 +40,14 @@ public class ParameterModel {
         this.temperature = temperature;
     }
 
+    public float getGas() {
+        return gas;
+    }
+
+    public void setGas(float gas) {
+        this.gas = gas;
+    }
+
     public float getHumidity() {
         return humidity;
     }
@@ -44,19 +56,27 @@ public class ParameterModel {
         this.humidity = humidity;
     }
 
-    public float getVoc() {
-        return voc;
+    public float getRelative_humidity() {
+        return relative_humidity;
     }
 
-    public void setVoc(float voc) {
-        this.voc = voc;
+    public void setRelative_humidity(float relative_humidity) {
+        this.relative_humidity = relative_humidity;
     }
 
-    public float getCo2() {
-        return co2;
+    public float getPressure() {
+        return pressure;
     }
 
-    public void setCo2(float co2) {
-        this.co2 = co2;
+    public void setPressure(float pressure) {
+        this.pressure = pressure;
+    }
+
+    public float getAltitude() {
+        return altitude;
+    }
+
+    public void setAltitude(float altitude) {
+        this.altitude = altitude;
     }
 }

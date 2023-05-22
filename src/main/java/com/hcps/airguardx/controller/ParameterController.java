@@ -22,10 +22,13 @@ public class ParameterController {
         JSONObject obj = new JSONObject(data);
 
         ParameterModel model = new ParameterModel();
+
         model.setTemperature(obj.getFloat("temperature"));
+        model.setGas(obj.getFloat("gas"));
         model.setHumidity(obj.getFloat("humidity"));
-        model.setVoc(obj.getFloat("voc"));
-        model.setCo2(obj.getFloat("co2"));
+        model.setRelative_humidity(obj.getFloat("relative_humidity"));
+        model.setPressure(obj.getFloat("pressure"));
+        model.setAltitude(obj.getFloat("altitude"));
 
         parameterService.setParameters(model);
 

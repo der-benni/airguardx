@@ -29,6 +29,7 @@ public class ParameterController {
         model.setRelative_humidity(obj.getFloat("relative_humidity"));
         model.setPressure(obj.getFloat("pressure"));
         model.setAltitude(obj.getFloat("altitude"));
+        model.setTimestamp(obj.getString("timestamp"));
 
         parameterService.setParameters(model);
 

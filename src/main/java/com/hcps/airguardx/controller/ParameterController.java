@@ -36,9 +36,14 @@ public class ParameterController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/parameters")
-    public @ResponseBody Iterable<ParameterModel> getParameters() {
-        return parameterService.getParameters();
+    @GetMapping("/lastHourRecords")
+    public @ResponseBody Iterable<ParameterModel> getLastTenRecords() {
+        return parameterService.getLastHourRecords();
+    }
+
+    @GetMapping("/lastRecord")
+    public @ResponseBody ParameterModel getLastRecord() {
+        return parameterService.getLastRecord();
     }
 
 }

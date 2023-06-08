@@ -13,8 +13,12 @@ public class ParameterService {
         this.parameterRepository = parameterRepository;
     }
 
-    public Iterable<ParameterModel> getParameters() {
-        return parameterRepository.findAll();
+    public Iterable<ParameterModel> getLastHourRecords() {
+        return parameterRepository.findFirst60ByOrderByIdDesc();
+    }
+
+    public ParameterModel getLastRecord() {
+        return parameterRepository.findFirst1ByOrderByIdDesc();
     }
 
     public void setParameters(ParameterModel data) {

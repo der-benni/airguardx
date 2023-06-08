@@ -24,9 +24,9 @@ function setLatestData() {
         url: '/lastRecord',
         type: "GET",
         success: function (data) {
-            setLatestHumidity(Math.round(data.relative_humidity));
-            setLatestTemperature(Math.round(data.temperature));
-            setLatestGas(Math.round(data.gas));
+            setLatestHumidity(round(data.relative_humidity, 1));
+            setLatestTemperature(round(data.temperature, 1));
+            setLatestGas(round(data.gas, 1));
         }
     });
 }
@@ -55,7 +55,7 @@ function setLatestHumidity(data) {
     }
 
     $('#humidityProgress').css('width', data + '%');
-    $('#humidityValue').text(data + '%');
+    $('#humidityValue').text(String(data).replace('.', ',') + ' %');
 
 }
 
@@ -83,7 +83,7 @@ function setLatestTemperature(data) {
     }
 
     $('#temperatureProgress').css('width', (data * 2) + '%');
-    $('#temperatureValue').text(data + '°');
+    $('#temperatureValue').text(String(data).replace('.', ',') + ' °');
 
 }
 
@@ -210,6 +210,9 @@ function setDailyDataOutside() {
         success: function (data) {
             $('#sunrise').text(getSunTimes(data['daily']['sunrise'][0]));
             $('#sunset').text(getSunTimes(data['daily']['sunset'][0]));
+            $('#outsideHumidity').text(String(data['hourly']['relativehumidity_2m'][data['hourly']['time'].indexOf(data['current_weather']['time'])]).replace('.', ',') + ' %');
+            $('#outsideTemperature').text(String(data['current_weather']['temperature']).replace('.', ',') + ' °C');
+            $('#outsideWindspeed').text(String(data['current_weather']['windspeed']).replace('.', ',') + ' km/h');
             setOutsideChart(data);
         }
     });
@@ -302,4 +305,9 @@ function toggleHour() {
     $('#dayContainer').addClass('d-none');
     $('#hourContainer').removeClass('d-none');
 
+}
+
+function round(value, precision) {
+    let multiplier = Math.pow(10, precision || 0);
+    return Math.round(value * multiplier) / multiplier;
 }

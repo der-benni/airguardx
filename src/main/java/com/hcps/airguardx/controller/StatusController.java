@@ -1,11 +1,13 @@
 package com.hcps.airguardx.controller;
 
 import com.hcps.airguardx.model.DataModel;
+import com.hcps.airguardx.model.StatusModel;
 import com.hcps.airguardx.service.DataService;
 import com.hcps.airguardx.service.StatusService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -36,14 +38,17 @@ public class StatusController {
     }
 
     @GetMapping("/sensorStatus")
-    public ResponseEntity<Object> getSensorStatus() {
+    public @ResponseBody StatusModel getSensorStatus() {
+
+        StatusModel statusModel = new StatusModel();
 
         if (statusService.isSensorStatus()) {
-            return new ResponseEntity<>("{'status': 1}", HttpStatus.OK);
+            statusModel.setStatus(1);
         } else {
-            return new ResponseEntity<>("{'status': 0}", HttpStatus.OK);
+            statusModel.setStatus(0);
         }
 
+        return statusModel;
     }
 
 }

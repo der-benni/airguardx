@@ -12,12 +12,14 @@ $(window).on('load', function () {
         toggleHour();
     });
 
+    setSensorStatus();
     setLatestData();
     setHourlyData();
     setDailyData();
     setDailyDataOutside();
 
     setInterval(function () {
+        setSensorStatus();
         setLatestData();
         setHourlyData();
         setDailyData();
@@ -27,6 +29,29 @@ $(window).on('load', function () {
 
 function getTime(time) {
     return new Date(time).getHours() + ':' + new Date(time).getMinutes();
+}
+
+function setSensorStatus() {
+    $.ajax({
+        url: '/sensorStatus',
+        type: "GET",
+        success: function (data) {
+
+            $('#statusIndicator').removeClass();
+            $('#statusText').removeClass();
+
+            if (data.status === 1) {
+                $('#statusText').text('Sensor online');
+                $('#statusText').addClass('ps-2 text-success');
+                $('#statusIndicator').addClass('bi bi-wifi text-success');
+            } else {
+                $('#statusText').text('Sensor offline');
+                $('#statusText').addClass('ps-2 text-danger');
+                $('#statusIndicator').addClass('bi bi-wifi text-danger');
+            }
+
+        }
+    });
 }
 
 function setLatestData() {

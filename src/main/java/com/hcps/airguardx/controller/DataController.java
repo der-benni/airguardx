@@ -3,6 +3,7 @@ package com.hcps.airguardx.controller;
 import com.hcps.airguardx.model.DataDayModel;
 import com.hcps.airguardx.model.DataModel;
 import com.hcps.airguardx.service.DataService;
+import com.hcps.airguardx.service.StatusService;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.*;
 public class DataController {
 
     private final DataService dataService;
+    private final StatusService statusService;
 
-    public DataController(DataService dataService) {
+    public DataController(DataService dataService, StatusService statusService) {
         this.dataService = dataService;
+        this.statusService = statusService;
     }
 
     @PostMapping("/data")
@@ -34,6 +37,8 @@ public class DataController {
 
         dataService.setParameters(data);
         dataService.setDayData(data);
+
+        this.statusService.setSensorStatus(true);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }

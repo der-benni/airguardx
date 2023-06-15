@@ -60,7 +60,7 @@ public class DataService {
 
     }
 
-    private DataDayModel convert (DataModel dataModel) {
+    private DataDayModel convert(DataModel dataModel) {
 
         DataDayModel newData = new DataDayModel();
 

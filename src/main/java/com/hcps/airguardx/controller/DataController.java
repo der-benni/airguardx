@@ -20,7 +20,7 @@ public class DataController {
         this.statusService = statusService;
     }
 
-    @PostMapping("/data")
+    @PostMapping("/parameters")
     public ResponseEntity<Object> setParameters(@RequestBody String jsonData) {
 
         JSONObject obj = new JSONObject(jsonData);

@@ -23,8 +23,8 @@ public class SpringConfig {
         this.statusService = statusService;
     }
 
-    // check every 10 minutes if sensor is sending data
-    @Scheduled(fixedRate = 60000)
+    // check every 5 minutes if sensor is sending data
+    @Scheduled(fixedRate = 300000)
     public void scheduleFixedRateTask() {
 
         if (dataModel != null && this.dataModel.toString().equals(this.dataService.getLatestRecord().toString())) {

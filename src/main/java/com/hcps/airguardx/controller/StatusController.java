@@ -22,19 +22,20 @@ public class StatusController {
     }
 
     @GetMapping("/roomStatus")
-    public ResponseEntity<Object> getRoomStatus() {
+    public @ResponseBody StatusModel getRoomStatus() {
 
         DataModel dataModel = this.dataService.getLatestRecord();
+        StatusModel statusModel = new StatusModel();
 
-        if (dataModel.getTemperature() < 20 || dataModel.getTemperature() > 23) {
-            return new ResponseEntity<>("{'status': 0}", HttpStatus.OK);
+        if (dataModel.getTemperature() < 18 || dataModel.getTemperature() > 25) {
+            statusModel.setStatus(0);
+        } else if (dataModel.getHumidity() < 40 || dataModel.getHumidity() > 60) {
+            statusModel.setStatus(0);
+        } else {
+            statusModel.setStatus(1);
         }
 
-        if (dataModel.getHumidity() < 40 || dataModel.getHumidity() > 60) {
-            return new ResponseEntity<>("{'status': 0}", HttpStatus.OK);
-        }
-
-        return new ResponseEntity<>("{'status': 1}", HttpStatus.OK);
+        return statusModel;
     }
 
     @GetMapping("/sensorStatus")

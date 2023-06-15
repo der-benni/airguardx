@@ -1,3 +1,7 @@
+let dayChart = null;
+let hourChart = null;
+let dayChartOutside = null;
+
 $(window).on('load', function () {
 
     $('#dayButton').on('click', function () {
@@ -13,6 +17,12 @@ $(window).on('load', function () {
     setDailyData();
     setDailyDataOutside();
 
+    setInterval(function () {
+        setLatestData();
+        setHourlyData();
+        setDailyData();
+        setDailyDataOutside();
+        }, 30000);
 });
 
 function getTime(time) {
@@ -21,7 +31,7 @@ function getTime(time) {
 
 function setLatestData() {
     $.ajax({
-        url: '/lastRecord',
+        url: '/latestRecord',
         type: "GET",
         success: function (data) {
             setLatestHumidity(round(data.relative_humidity, 1));
@@ -89,53 +99,26 @@ function setLatestTemperature(data) {
 
 function setLatestGas(data) {
     // todo: when gas sensor is delivered
-    console.log(data);
 }
 
 function setHourlyData() {
 
     $.ajax({
-        url: '/lastHourRecords',
+        url: '/hourRecords',
         type: "GET",
         success: function (reversedData) {
 
             let data = reversedData.reverse();
-
-            let ctx = document.getElementById('hourChart');
-
+            let elem = document.getElementById('hourChart');
             let labels = getFromParams(data, data.length, 'timestamp');
             let temperature = getFromParams(data, data.length, 'temperature');
             let humidity = getFromParams(data, data.length, 'relative_humidity');
 
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Temperatur (°C)',
-                        data: temperature,
-                        borderWidth: 1,
-                        fill: false,
-                        borderColor: '#006ee0',
-                        tension: 0.2
-                    },{
-                        label: 'Luftfeuchtigkeit (%)',
-                        data: humidity,
-                        borderWidth: 1,
-                        fill: false,
-                        borderColor: '#198754',
-                        tension: 0.2
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    },
-                    aspectRatio: 4
-                }
-            });
+            if (!hourChart) {
+                hourChart = createChart(elem, labels, temperature, humidity);
+            } else {
+                updateChart(hourChart, labels, temperature, humidity);
+            }
 
         }
     });
@@ -143,60 +126,23 @@ function setHourlyData() {
 
 function setDailyData() {
 
-    ctx = document.getElementById('dayChart');
+    $.ajax({
+        url: '/dayRecords',
+        type: "GET",
+        success: function (reversedData) {
 
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: [
-                '0 Uhr',
-                '1 Uhr',
-                '2 Uhr',
-                '3 Uhr',
-                '4 Uhr',
-                '5 Uhr',
-                '6 Uhr',
-                '7 Uhr',
-                '8 Uhr',
-                '9 Uhr',
-                '10 Uhr',
-                '11 Uhr',
-                '12 Uhr',
-                '13 Uhr',
-                '14 Uhr',
-                '15 Uhr',
-                '16 Uhr',
-                '17 Uhr',
-                '18 Uhr',
-                '19 Uhr',
-                '20 Uhr',
-                '21 Uhr',
-                '22 Uhr',
-                '23 Uhr',
-            ],
-            datasets: [{
-                label: 'Temperatur (°C)',
-                data: [20, 25, 23, 23, 19, 20, 20, 25.5, 23, 23, 19, 20, 13, 30, 19, 20, 20, 25, 23, 23, 19, 20, 13, 19],
-                borderWidth: 1,
-                fill: false,
-                borderColor: '#006ee0',
-                tension: 0.2
-            },{
-                label: 'Luftfeuchtigkeit (%)',
-                data: [40, 50, 55, 35, 40, 50, 55, 35, 40, 50, 55, 35, 40, 50, 55, 35, 40, 50, 55, 35, 40, 50, 55, 35],
-                borderWidth: 1,
-                fill: false,
-                borderColor: '#198754',
-                tension: 0.2
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            },
-            aspectRatio: 4
+            let data = reversedData.reverse();
+            let elem = document.getElementById('dayChart');
+            let labels = getFromParams(data, data.length, 'timestamp');
+            let temperature = getFromParams(data, data.length, 'temperature');
+            let humidity = getFromParams(data, data.length, 'relative_humidity');
+
+            if (!dayChart) {
+                dayChart = createChart(elem, labels, temperature, humidity);
+            } else {
+                updateChart(dayChart, labels, temperature, humidity);
+            }
+
         }
     });
 
@@ -227,7 +173,17 @@ function setOutsideChart(data) {
     let temperature = getHourlyParamsOutside(data, 24, 'temperature_2m');
     let humidity = getHourlyParamsOutside(data, 24, 'relativehumidity_2m');
 
-    new Chart(elem, {
+    if (!dayChartOutside) {
+        dayChartOutside = createChart(elem, labels, temperature, humidity);
+    } else {
+        updateChart(dayChartOutside, labels, temperature, humidity);
+    }
+
+}
+
+function createChart(elem, labels, temperature, humidity) {
+
+    return new Chart(elem, {
         type: 'line',
         data: {
             labels: labels,
@@ -257,6 +213,13 @@ function setOutsideChart(data) {
         }
     });
 
+}
+
+function updateChart(chart, labels, temperature, humidity) {
+    chart.data.labels = labels;
+    chart.data.datasets[0].data = temperature;
+    chart.data.datasets[1].data = humidity;
+    chart.update();
 }
 
 function getHourlyParamsOutside(data, count, type) {

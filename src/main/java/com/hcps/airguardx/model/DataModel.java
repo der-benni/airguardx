@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class ParameterModel {
+public class DataModel {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -88,5 +88,19 @@ public class ParameterModel {
 
     public void setAltitude(float altitude) {
         this.altitude = altitude;
+    }
+
+    @Override
+    public String toString() {
+        return "DataModel{" +
+                "id=" + id +
+                ", temperature=" + temperature +
+                ", gas=" + gas +
+                ", humidity=" + humidity +
+                ", relative_humidity=" + relative_humidity +
+                ", pressure=" + pressure +
+                ", altitude=" + altitude +
+                ", timestamp='" + timestamp + '\'' +
+                '}';
     }
 }

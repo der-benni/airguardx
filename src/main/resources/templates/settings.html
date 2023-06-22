@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -73,8 +73,8 @@
             <!-- Wohn- / Arbeitszimmer -->
             <div class="col-sm-4">
                 <label>
-                    <input type="radio" name="product" class="card-input-element" />
-                    <div class="p-2 position-relative radio-input">
+                    <input type="radio" name="product" class="card-input-element" th:checked="${profile == 0}" />
+                    <div class="p-2 position-relative radio-input" data-profile="0">
                         <p class="text-center text-secondary fw-bold">Wohn- / Arbeitszimmer</p>
                         <div class="d-flex justify-content-around">
                             <p class="text-secondary">40-60 %</p>
@@ -86,8 +86,8 @@
             <!-- Schlafzimmer -->
             <div class="col-sm-4">
                 <label>
-                    <input type="radio" name="product" class="card-input-element" />
-                    <div class="p-2 position-relative radio-input">
+                    <input type="radio" name="product" class="card-input-element" th:checked="${profile == 1}" />
+                    <div class="p-2 position-relative radio-input" data-profile="1">
                         <p class="text-center text-secondary fw-bold">Schlafzimmer</p>
                         <div class="d-flex justify-content-around">
                             <p class="text-secondary">40-60 %</p>
@@ -99,8 +99,8 @@
             <!-- Küche -->
             <div class="col-sm-4">
                 <label>
-                    <input type="radio" name="product" class="card-input-element" />
-                    <div class="p-2 position-relative radio-input">
+                    <input type="radio" name="product" class="card-input-element" th:checked="${profile == 2}" />
+                    <div class="p-2 position-relative radio-input" data-profile="2">
                         <p class="text-center text-secondary fw-bold">Küche</p>
                         <div class="d-flex justify-content-around">
                             <p class="text-secondary">50-60 %</p>
@@ -114,8 +114,8 @@
             <!-- Badezimmer -->
             <div class="col-sm-4">
                 <label>
-                    <input type="radio" name="product" class="card-input-element" />
-                    <div class="p-2 position-relative radio-input">
+                    <input type="radio" name="product" class="card-input-element" th:checked="${profile == 3}" />
+                    <div class="p-2 position-relative radio-input" data-profile="3">
                         <p class="text-center text-secondary fw-bold">Badezimmer</p>
                         <div class="d-flex justify-content-around">
                             <p class="text-secondary">50-70 %</p>
@@ -127,8 +127,8 @@
             <!-- Keller -->
             <div class="col-sm-4">
                 <label>
-                    <input type="radio" name="product" class="card-input-element" />
-                    <div class="p-2 position-relative radio-input">
+                    <input type="radio" name="product" class="card-input-element" th:checked="${profile == 4}" />
+                    <div class="p-2 position-relative radio-input" data-profile="4">
                         <p class="text-center text-secondary fw-bold">Keller</p>
                         <div class="d-flex justify-content-around">
                             <p class="text-secondary">50-65 %</p>

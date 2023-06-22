@@ -31,6 +31,11 @@ function getTime(time) {
     return new Date(time).getHours() + ':' + new Date(time).getMinutes();
 }
 
+function getDayMonthYear(data) {
+    let date = new Date(data);
+    return date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
+}
+
 function setSensorStatus() {
     $.ajax({
         url: '/sensorStatus',
@@ -56,33 +61,39 @@ function setSensorStatus() {
 
 function setLatestData() {
     $.ajax({
-        url: '/latestRecord',
+        url: '/getProfileValues',
         type: "GET",
-        success: function (data) {
-            setLatestHumidity(round(data.humidity, 1));
-            setLatestTemperature(round(data.temperature, 1));
-            setLatestGas(round(data.co2, 1));
+        success: function (values) {
+            $.ajax({
+                url: '/latestRecord',
+                type: "GET",
+                success: function (data) {
+                    setLatestHumidity(round(data.humidity, 1), values);
+                    setLatestTemperature(round(data.temperature, 1), values);
+                    setLatestGas(round(data.co2, 1));
+                }
+            });
         }
     });
 }
 
-function setLatestHumidity(data) {
+function setLatestHumidity(data, values) {
 
     $('#humiditySmiley').removeClass();
     $('#humidityProgress').removeClass();
     $('#humidityValue').removeClass();
 
-    if (data >= 40 && data <= 60) {
+    if (data >= values[0] && data <= values[1]) {
         // good
         $('#humiditySmiley').addClass('bi bi-emoji-smile-fill text-success position-absolute');
         $('#humidityProgress').addClass('progress-bar progress-bar--green');
         $('#humidityValue').addClass('text-success');
-    } else if ((data >= 35 && data < 40) || (data > 60 && data <= 65)) {
+    } else if ((data >= values[0] - 5 && data < values[0]) || (data > values[1] && data <= values[1] + 5)) {
         // middle
         $('#humiditySmiley').addClass('bi bi-emoji-neutral-fill color-orange position-absolute');
         $('#humidityProgress').addClass('progress-bar progress-bar--warning');
         $('#humidityValue').addClass('color-orange');
-    } else if (data < 35 || data > 65) {
+    } else if (data < values[0] - 5 || data > values[1] + 5) {
         // bad
         $('#humiditySmiley').addClass('bi bi-emoji-frown-fill text-danger position-absolute');
         $('#humidityProgress').addClass('progress-bar progress-bar--danger');
@@ -94,23 +105,23 @@ function setLatestHumidity(data) {
 
 }
 
-function setLatestTemperature(data) {
+function setLatestTemperature(data, values) {
 
     $('#temperatureSmiley').removeClass();
     $('#temperatureProgress').removeClass();
     $('#temperatureValue').removeClass();
 
-    if (data >= 20 && data <= 23) {
+    if (data >= values[2] && data <= values[3]) {
         // good
         $('#temperatureSmiley').addClass('bi bi-emoji-smile-fill text-success position-absolute');
         $('#temperatureProgress').addClass('progress-bar progress-bar--green');
         $('#temperatureValue').addClass('text-success');
-    } else if ((data >= 18 && data < 20) || (data > 23 && data <= 25)) {
+    } else if ((data >= values[2] - 2 && data < values[2]) || (data > values[3] && data <= values[3] + 2)) {
         // middle
         $('#temperatureSmiley').addClass('bi bi-emoji-neutral-fill color-orange position-absolute');
         $('#temperatureProgress').addClass('progress-bar progress-bar--warning');
         $('#temperatureValue').addClass('color-orange');
-    } else if (data < 18 || data > 25) {
+    } else if (data < values[2] - 2 || data > values[3] + 2) {
         // bad
         $('#temperatureSmiley').addClass('bi bi-emoji-frown-fill text-danger position-absolute');
         $('#temperatureProgress').addClass('progress-bar progress-bar--danger');
@@ -123,7 +134,29 @@ function setLatestTemperature(data) {
 }
 
 function setLatestGas(data) {
-    // todo: when gas sensor is delivered
+    $('#co2Smiley').removeClass();
+    $('#co2Progress').removeClass();
+    $('#co2Value').removeClass();
+
+    if (data < 1000) {
+        // good
+        $('#co2Smiley').addClass('bi bi-emoji-smile-fill text-success position-absolute');
+        $('#co2Progress').addClass('progress-bar progress-bar--green');
+        $('#co2Value').addClass('text-success');
+    } else if (data >= 1000 && data < 2000) {
+        // middle
+        $('#co2Smiley').addClass('bi bi-emoji-neutral-fill color-orange position-absolute');
+        $('#co2Progress').addClass('progress-bar progress-bar--warning');
+        $('#co2Value').addClass('color-orange');
+    } else if (data > 2000) {
+        // bad
+        $('#co2Smiley').addClass('bi bi-emoji-frown-fill text-danger position-absolute');
+        $('#co2Progress').addClass('progress-bar progress-bar--danger');
+        $('#co2Value').addClass('text-danger');
+    }
+
+    $('#co2Progress').css('width', (data < 2000 ? (data / 2000) * 100 : 100) + '%');
+    $('#co2Value').text(String(data).replace('.', ',') + ' ppm');
 }
 
 function setHourlyData() {
@@ -181,6 +214,7 @@ function setDailyDataOutside() {
         success: function (data) {
             $('#sunrise').text(getSunTimes(data['daily']['sunrise'][0]));
             $('#sunset').text(getSunTimes(data['daily']['sunset'][0]));
+            $('#dateOutside').text(getDayMonthYear(data['current_weather']['time']));
             $('#outsideHumidity').text(String(data['hourly']['relativehumidity_2m'][data['hourly']['time'].indexOf(data['current_weather']['time'])]).replace('.', ',') + ' %');
             $('#outsideTemperature').text(String(data['current_weather']['temperature']).replace('.', ',') + ' °C');
             $('#outsideWindspeed').text(String(data['current_weather']['windspeed']).replace('.', ',') + ' km/h');
@@ -266,8 +300,8 @@ function getFromParams(data, count, type) {
             tempArray[i] = getTime(data[i].timestamp);
         } else if (type === 'temperature') {
             tempArray[i] = data[i].temperature;
-        } else if (type === 'relative_humidity') {
-            tempArray[i] = data[i].relative_humidity;
+        } else if (type === 'humidity') {
+            tempArray[i] = data[i].humidity;
         }
     }
     return tempArray;

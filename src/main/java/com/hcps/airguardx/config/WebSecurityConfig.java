@@ -17,6 +17,7 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
                 .authorizeHttpRequests((requests) ->
                         requests.anyRequest().authenticated()
                 )
@@ -25,6 +26,7 @@ public class WebSecurityConfig {
                         .defaultSuccessUrl("/", true)
                         .permitAll()
                 )
+                .httpBasic().and()
                 .logout((logout) -> logout.permitAll());
 
         return http.build();

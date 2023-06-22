@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AirGuardX - Einstellungen</title>
+    <link rel="stylesheet" href="/styles/style.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icon/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="/images/icon/favicon.ico">
+
+    <style>
+        label {
+            width: 100%;
+        }
+
+        .card-input-element {
+            display: none;
+        }
+
+        .radio-input {
+            border: 2px solid #dee2e6;
+            border-radius: 4px;
+        }
+
+        .radio-input:hover {
+            cursor: pointer;
+        }
+
+        .card-input-element:checked + .radio-input {
+            border-color: #0d6efd;
+        }
+    </style>
+</head>
+<body class="body">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container d-flex justify-content-between">
+        <a class="navbar-brand" href="./">AirGuardX</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/info">Info</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/settings"><i class="bi bi-gear-fill"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Navigation End -->
+
+<div class="container bg-white rounded-3 my-3 p-3 shadow position-relative">
+    <h2>Einstellungen</h2>
+    <div class="p-3">
+        <h4 class="text-secondary">Profil</h4>
+        <div class="row mx-auto">
+            <!-- Wohn- / Arbeitszimmer -->
+            <div class="col-sm-4">
+                <label>
+                    <input type="radio" name="product" class="card-input-element" />
+                    <div class="p-2 position-relative radio-input">
+                        <p class="text-center text-secondary fw-bold">Wohn- / Arbeitszimmer</p>
+                        <div class="d-flex justify-content-around">
+                            <p class="text-secondary">40-60 %</p>
+                            <p class="text-secondary">20°C</p>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <!-- Schlafzimmer -->
+            <div class="col-sm-4">
+                <label>
+                    <input type="radio" name="product" class="card-input-element" />
+                    <div class="p-2 position-relative radio-input">
+                        <p class="text-center text-secondary fw-bold">Schlafzimmer</p>
+                        <div class="d-flex justify-content-around">
+                            <p class="text-secondary">40-60 %</p>
+                            <p class="text-secondary">16-18°C</p>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <!-- Küche -->
+            <div class="col-sm-4">
+                <label>
+                    <input type="radio" name="product" class="card-input-element" />
+                    <div class="p-2 position-relative radio-input">
+                        <p class="text-center text-secondary fw-bold">Küche</p>
+                        <div class="d-flex justify-content-around">
+                            <p class="text-secondary">50-60 %</p>
+                            <p class="text-secondary">18°C</p>
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="row mx-auto mt-3">
+            <!-- Badezimmer -->
+            <div class="col-sm-4">
+                <label>
+                    <input type="radio" name="product" class="card-input-element" />
+                    <div class="p-2 position-relative radio-input">
+                        <p class="text-center text-secondary fw-bold">Badezimmer</p>
+                        <div class="d-flex justify-content-around">
+                            <p class="text-secondary">50-70 %</p>
+                            <p class="text-secondary">23°C</p>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <!-- Keller -->
+            <div class="col-sm-4">
+                <label>
+                    <input type="radio" name="product" class="card-input-element" />
+                    <div class="p-2 position-relative radio-input">
+                        <p class="text-center text-secondary fw-bold">Keller</p>
+                        <div class="d-flex justify-content-around">
+                            <p class="text-secondary">50-65 %</p>
+                            <p class="text-secondary">10-15°C</p>
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<!-- jQuery -->
+<script src="/scripts/jQuery.js"></script>
+<!-- Custom Scripts -->
+<script src="/scripts/settings.js"></script>
+
+</body>
+</html>

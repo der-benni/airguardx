@@ -4,6 +4,7 @@ import com.hcps.airguardx.model.DataModel;
 import com.hcps.airguardx.model.StatusModel;
 import com.hcps.airguardx.service.DataService;
 import com.hcps.airguardx.service.StatusService;
+import com.hcps.airguardx.service.WeatherService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +16,12 @@ public class StatusController {
 
     private final StatusService statusService;
     private final DataService dataService;
+    private final WeatherService weatherService;
 
-    public StatusController(StatusService statusService, DataService dataService) {
+    public StatusController(StatusService statusService, DataService dataService, WeatherService weatherService) {
         this.statusService = statusService;
         this.dataService = dataService;
+        this.weatherService = weatherService;
     }
 
     @GetMapping("/roomStatus")

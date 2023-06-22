@@ -28,11 +28,8 @@ public class DataController {
         DataModel data = new DataModel();
 
         data.setTemperature(obj.getFloat("temperature"));
-        data.setGas(obj.getFloat("gas"));
+        data.setCo2(obj.getFloat("co2"));
         data.setHumidity(obj.getFloat("humidity"));
-        data.setRelative_humidity(obj.getFloat("relative_humidity"));
-        data.setPressure(obj.getFloat("pressure"));
-        data.setAltitude(obj.getFloat("altitude"));
         data.setTimestamp(obj.getString("timestamp"));
 
         dataService.setParameters(data);

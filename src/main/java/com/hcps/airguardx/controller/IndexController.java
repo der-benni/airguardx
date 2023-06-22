@@ -16,4 +16,14 @@ public class IndexController {
         return "info";
     }
 
+    @GetMapping("/login")
+    public String getLogin() {
+        return "login";
+    }
+
+    @GetMapping("/settings")
+    public String getSettings() {
+        return "settings";
+    }
+
 }

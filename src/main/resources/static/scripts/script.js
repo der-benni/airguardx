@@ -59,9 +59,9 @@ function setLatestData() {
         url: '/latestRecord',
         type: "GET",
         success: function (data) {
-            setLatestHumidity(round(data.relative_humidity, 1));
+            setLatestHumidity(round(data.humidity, 1));
             setLatestTemperature(round(data.temperature, 1));
-            setLatestGas(round(data.gas, 1));
+            setLatestGas(round(data.co2, 1));
         }
     });
 }
@@ -137,7 +137,7 @@ function setHourlyData() {
             let elem = document.getElementById('hourChart');
             let labels = getFromParams(data, data.length, 'timestamp');
             let temperature = getFromParams(data, data.length, 'temperature');
-            let humidity = getFromParams(data, data.length, 'relative_humidity');
+            let humidity = getFromParams(data, data.length, 'humidity');
 
             if (!hourChart) {
                 hourChart = createChart(elem, labels, temperature, humidity);
@@ -160,7 +160,7 @@ function setDailyData() {
             let elem = document.getElementById('dayChart');
             let labels = getFromParams(data, data.length, 'timestamp');
             let temperature = getFromParams(data, data.length, 'temperature');
-            let humidity = getFromParams(data, data.length, 'relative_humidity');
+            let humidity = getFromParams(data, data.length, 'humidity');
 
             if (!dayChart) {
                 dayChart = createChart(elem, labels, temperature, humidity);

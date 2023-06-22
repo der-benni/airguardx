@@ -14,25 +14,11 @@ public class DataModel {
 
     private float temperature;
 
-    private float gas;
+    private float co2;
 
     private float humidity;
 
-    private float relative_humidity;
-
-    private float pressure;
-
-    private float altitude;
-
     private String timestamp;
-
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
 
     public Integer getId() {
         return id;
@@ -50,12 +36,12 @@ public class DataModel {
         this.temperature = temperature;
     }
 
-    public float getGas() {
-        return gas;
+    public float getCo2() {
+        return co2;
     }
 
-    public void setGas(float gas) {
-        this.gas = gas;
+    public void setCo2(float co2) {
+        this.co2 = co2;
     }
 
     public float getHumidity() {
@@ -66,28 +52,12 @@ public class DataModel {
         this.humidity = humidity;
     }
 
-    public float getRelative_humidity() {
-        return relative_humidity;
+    public String getTimestamp() {
+        return timestamp;
     }
 
-    public void setRelative_humidity(float relative_humidity) {
-        this.relative_humidity = relative_humidity;
-    }
-
-    public float getPressure() {
-        return pressure;
-    }
-
-    public void setPressure(float pressure) {
-        this.pressure = pressure;
-    }
-
-    public float getAltitude() {
-        return altitude;
-    }
-
-    public void setAltitude(float altitude) {
-        this.altitude = altitude;
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Override
@@ -95,11 +65,8 @@ public class DataModel {
         return "DataModel{" +
                 "id=" + id +
                 ", temperature=" + temperature +
-                ", gas=" + gas +
+                ", co2=" + co2 +
                 ", humidity=" + humidity +
-                ", relative_humidity=" + relative_humidity +
-                ", pressure=" + pressure +
-                ", altitude=" + altitude +
                 ", timestamp='" + timestamp + '\'' +
                 '}';
     }

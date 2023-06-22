@@ -65,11 +65,8 @@ public class DataService {
         DataDayModel newData = new DataDayModel();
 
         newData.setTemperature(dataModel.getTemperature());
-        newData.setGas(dataModel.getGas());
+        newData.setCo2(dataModel.getCo2());
         newData.setHumidity(dataModel.getHumidity());
-        newData.setRelative_humidity(dataModel.getRelative_humidity());
-        newData.setPressure(dataModel.getPressure());
-        newData.setAltitude(dataModel.getAltitude());
         newData.setTimestamp(dataModel.getTimestamp());
 
         return newData;

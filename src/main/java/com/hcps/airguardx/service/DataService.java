@@ -26,7 +26,7 @@ public class DataService {
     }
 
     public Iterable<DataModel> getLastSixtyRecords() {
-        return dataRepository.findFirst60ByOrderByIdDesc();
+        return dataRepository.findFirst12ByOrderByIdDesc();
     }
 
     public Iterable<DataDayModel> getLastDayRecords() {

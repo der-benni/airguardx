@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface DataRepository extends CrudRepository<DataModel, Integer> {
 
-    List<DataModel> findFirst60ByOrderByIdDesc();
+    List<DataModel> findFirst12ByOrderByIdDesc();
 
     DataModel findFirst1ByOrderByIdDesc();
 

@@ -212,8 +212,8 @@ function setDailyDataOutside() {
         url: 'https://api.open-meteo.com/v1/forecast?latitude=50.26&longitude=10.96&hourly=temperature_2m,relativehumidity_2m,windspeed_10m&daily=sunrise,sunset&current_weather=true&forecast_days=1&timezone=Europe%2FBerlin',
         type: "GET",
         success: function (data) {
-            $('#sunrise').text(getSunTimes(data['daily']['sunrise'][0]));
-            $('#sunset').text(getSunTimes(data['daily']['sunset'][0]));
+            $('#sunrise').text(formatTimes(data['daily']['sunrise'][0]));
+            $('#sunset').text(formatTimes(data['daily']['sunset'][0]));
             $('#dateOutside').text(getDayMonthYear(data['current_weather']['time']));
             $('#outsideHumidity').text(String(data['hourly']['relativehumidity_2m'][data['hourly']['time'].indexOf(data['current_weather']['time'])]).replace('.', ',') + ' %');
             $('#outsideTemperature').text(String(data['current_weather']['temperature']).replace('.', ',') + ' °C');
@@ -285,7 +285,7 @@ function getHourlyParamsOutside(data, count, type) {
     let tempArray = [];
     for (let i = 0; i < count; i++) {
         if (type === 'time') {
-            tempArray[i] = getTime(data['hourly'][type][i]) + '0';
+            tempArray[i] = formatTimes(data['hourly'][type][i]) + '0';
         } else {
             tempArray[i] = data['hourly'][type][i];
         }
@@ -297,7 +297,7 @@ function getFromParams(data, count, type) {
     let tempArray = [];
     for (let i = 0; i < count; i++) {
         if (type === 'timestamp') {
-            tempArray[i] = getTime(data[i].timestamp);
+            tempArray[i] = formatTimes(data[i].timestamp);
         } else if (type === 'temperature') {
             tempArray[i] = data[i].temperature;
         } else if (type === 'humidity') {
@@ -307,7 +307,7 @@ function getFromParams(data, count, type) {
     return tempArray;
 }
 
-function getSunTimes(time) {
+function formatTimes(time) {
     return new Date(time).getHours() + ':' + (new Date(time).getMinutes() < 10 ? '0' : '') + new Date(time).getMinutes();
 }
 

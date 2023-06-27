@@ -171,11 +171,12 @@ function setHourlyData() {
             let labels = getFromParams(data, data.length, 'timestamp');
             let temperature = getFromParams(data, data.length, 'temperature');
             let humidity = getFromParams(data, data.length, 'humidity');
+            let co2 = getFromParams(data, data.length, 'co2');
 
             if (!hourChart) {
-                hourChart = createChart(elem, labels, temperature, humidity);
+                hourChart = createChart(elem, labels, temperature, humidity, co2);
             } else {
-                updateChart(hourChart, labels, temperature, humidity);
+                updateChart(hourChart, labels, temperature, humidity, co2);
             }
 
         }
@@ -194,11 +195,12 @@ function setDailyData() {
             let labels = getFromParams(data, data.length, 'timestamp');
             let temperature = getFromParams(data, data.length, 'temperature');
             let humidity = getFromParams(data, data.length, 'humidity');
+            let co2 = getFromParams(data, data.length, 'co2');
 
             if (!dayChart) {
-                dayChart = createChart(elem, labels, temperature, humidity);
+                dayChart = createChart(elem, labels, temperature, humidity, co2);
             } else {
-                updateChart(dayChart, labels, temperature, humidity);
+                updateChart(dayChart, labels, temperature, humidity, co2);
             }
 
         }
@@ -240,7 +242,7 @@ function setOutsideChart(data) {
 
 }
 
-function createChart(elem, labels, temperature, humidity) {
+function createChart(elem, labels, temperature, humidity, co2) {
 
     return new Chart(elem, {
         type: 'line',
@@ -249,23 +251,60 @@ function createChart(elem, labels, temperature, humidity) {
             datasets: [{
                 label: 'Temperatur (°C)',
                 data: temperature,
-                borderWidth: 1,
+                borderWidth: 3,
                 fill: false,
-                borderColor: '#006ee0',
-                tension: 0.2
+                borderColor: '#ffbf69',
+                tension: 0.2,
+                yAxisID: 'A'
             },{
                 label: 'Luftfeuchtigkeit (%)',
                 data: humidity,
-                borderWidth: 1,
+                borderWidth: 3,
                 fill: false,
-                borderColor: '#198754',
-                tension: 0.2
+                borderColor: '#93aeed',
+                tension: 0.2,
+                yAxisID: 'B'
+            },{
+                label: 'CO2 (ppm)',
+                data: co2,
+                borderWidth: 3,
+                fill: false,
+                borderColor: '#787878',
+                tension: 0.2,
+                yAxisID: 'C'
             }]
         },
         options: {
             scales: {
-                y: {
-                    beginAtZero: true
+                A: {
+                    type: 'linear',
+                    position: 'left',
+                    min: 0,
+                    max: 50,
+                    border: {
+                        color: '#ffbf69',
+                        width: 3,
+                    },
+                },
+                B: {
+                    type: 'linear',
+                    position: 'left',
+                    min: 0,
+                    max: 100,
+                    border: {
+                        color: '#93aeed',
+                        width: 3,
+                    },
+                },
+                C: {
+                    type: 'linear',
+                    position: 'right',
+                    min: 0,
+                    max: 3000,
+                    border: {
+                        color: '#787878',
+                        width: 3,
+                    },
                 }
             },
             aspectRatio: 4
@@ -274,10 +313,11 @@ function createChart(elem, labels, temperature, humidity) {
 
 }
 
-function updateChart(chart, labels, temperature, humidity) {
+function updateChart(chart, labels, temperature, humidity, co2) {
     chart.data.labels = labels;
     chart.data.datasets[0].data = temperature;
     chart.data.datasets[1].data = humidity;
+    chart.data.datasets[2].data = co2;
     chart.update();
 }
 
@@ -302,6 +342,8 @@ function getFromParams(data, count, type) {
             tempArray[i] = data[i].temperature;
         } else if (type === 'humidity') {
             tempArray[i] = data[i].humidity;
+        } else if (type === 'co2') {
+            tempArray[i] = data[i].co2;
         }
     }
     return tempArray;

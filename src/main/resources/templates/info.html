@@ -18,35 +18,93 @@
   <link rel="icon" type="image/x-icon" href="/images/icon/favicon.ico">
 </head>
 <body class="body">
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="container d-flex justify-content-between">
-      <a class="navbar-brand" href="./">AirGuardX</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/info">Info</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/settings"><i class="bi bi-gear-fill"></i></a>
-          </li>
-        </ul>
-      </div>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <div class="container d-flex justify-content-between">
+    <a class="navbar-brand" href="./">AirGuardX</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/info">Info</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/settings"><i class="bi bi-gear-fill"></i></a>
+        </li>
+      </ul>
     </div>
-  </nav>
-  <!-- Navigation End -->
+  </div>
+</nav>
+<!-- Navigation End -->
 
   <div class="container bg-white rounded-3 my-3 p-3 shadow">
     <h2>Info</h2>
-    <p>Ersteller: Benedikt Scholz, Yannik Wolf</p>
-    <p>Master-Modul: Hardware cyber-physischer Systeme</p>
-    <p>Projekt: AirGuardX - Luftqualität</p>
+    <p class="p-3">Das Ziel des Lüftens besteht darin, verbrauchte Luft aus dem Haus zu entfernen und frische Luft hereinzulassen, während gleichzeitig der Wärmeverlust im Winter minimiert werden soll. Die Häuser werden immer dichter und sind exzellent gedämmt, um Energie zu sparen und den Komfort zu erhöhen. Ein effektiver Luftaustausch ist besonders wichtig und abhängig von der Jahreszeit und der Außentemperatur. Je größer der Temperaturunterschied zwischen Innen- und Außenbereich ist, desto schneller erfolgt der Luftaustausch. Bei kalter Außenluft sollten die Lüftungsintervalle kürzer sein. Bei höheren Außentemperaturen ist eine längere Lüftungszeit erforderlich. Beim Lüften ist es wichtig, die Fenster vollständig zu öffnen und die Heizung herunterzudrehen. Die effektivste Methode ist das Querlüften, bei dem gegenüberliegende Fenster weit geöffnet werden. Eine Faustregel besagt, dass zwei- bis dreimal am Tag Querlüften ausreichen sollten, wobei die Dauer bei sehr kaltem Wetter verkürzt und die Häufigkeit erhöht werden kann.</p>
+    <div class="table-responsive p-3">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Monat</th>
+          <th scope="col">Richtwert Lüftdauer (min)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Januar, Februar, Dezember</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>März, November</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>April, September*</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>Mai, Oktober</td>
+          <td>20</td>
+        </tr>
+        <tr>
+          <td>Juni, Juli, August</td>
+          <td>25</td>
+        </tr>
+        </tbody>
+      </table>
+      <p class="text-secondary">* Im September ermöglichen Temperatur und Luftfeuchtigkeit einen schnelleren Luftaustausch.</p>
+    </div>
+    <h2>Tipps</h2>
+    <div class="list-group p-3">
+      <button type="button" class="list-group-item list-group-item-action">Mindestens 3x täglich für Durchzug sorgen.</button>
+      <button type="button" class="list-group-item list-group-item-action">Am Wochenende oder bei Anwesenheit 4 - 5 Mal täglich lüften.</button>
+      <button type="button" class="list-group-item list-group-item-action">Bei Häusern mit neuer Dämmung oder neuen Fenstern muss verstärkt gelüftet werden, da kein Luftaustausch mehr über undichte Stellen erfolgen kann.</button>
+      <button type="button" class="list-group-item list-group-item-action">In Küche und Bad immer nach dem Kochen und Duschen Feuchtigkeit auslüften, im Schlafzimmer nach dem Aufstehen.</button>
+    </div>
+    <h2>Lüften im Winter</h2>
+    <p class="p-3">
+      Zu langes Lüften im Winter kann fatale Auswirkungen haben. Wenn Wände und Decken auskühlen und der Raum aufgrund der guten Dämmung schnell wieder aufgeheizt wird, steigt die Luftfeuchtigkeit. An kalten Flächen kondensiert die Feuchtigkeit, was zu schwarzen Flecken führen kann. Diese Flecken können Schimmelwachstum begünstigen, da Schimmelsporen dort Nährstoffe finden. Wenn Deckenplatten schneller auskühlen als die gut gedämmten Wände und der Raum erneut aufgeheizt wird, entstehen schwarze Flecken an den kältesten Stellen, die oft ein Muster der Lattung und Sparren nachzeichnen. Die direkte Verbindung zur ungedämmten Lattung bildet eine Wärmebrücke, an der sich Feuchtigkeit in Form von Kondensat niederschlägt und Staub, Sporen und Pollen bindet.
+      Lüften Sie in der kalten Jahreszeit mehrfach am Tag, dafür aber jeweils nur kurz. Die Luftfeuchtigkeit braucht übrigens nur rund zwei Minuten, dann ist sie bei richtigem Lüften entwichen.
+    </p>
+    <h2>Lüften im Sommer</h2>
+    <p class="p-3">
+      Im Sommer können gut gedämmte Häuser angenehm kühl sein, besonders im Kellerbereich. Jedoch kann es zu Problemen kommen, wenn Bewohner den hohen Temperaturunterschied zwischen Innen- und Außenbereich nicht beachten und unbedacht Fenster und Türen öffnen. Dabei strömt warme und feuchte Luft in kühlere Räume mit kühlen Wandoberflächen. Die warme Luft kühlt schnell ab, Feuchtigkeit kondensiert an den Wandoberflächen. Experten nennen dies den Schwitzeffekt. Das Problem ist, dass diese Feuchtigkeit keine Möglichkeit hat, nach außen transportiert zu werden. Das kann langfristig die Bildung von Schimmel begünstigen, insbesondere an geschützten Stellen. Um richtig zu lüften, sollte der Temperaturunterschied zwischen Innen- und Außenluft möglichst gering sein. Daher empfiehlt es sich, im Sommer spätabends, nachts oder frühmorgens zu lüften, wenn die Sonne die Luft noch nicht so stark erwärmt hat. Das Stoßlüften in kurzen, intensiven Phasen ist ratsam, und man sollte nicht von einem Raum in einen anderen lüften, da auch dort Temperaturunterschiede bestehen können. Wenn nötig, sollte die Innentemperatur fast dem Niveau der Außenluft entsprechen. Dies kann durch das Öffnen der Beschattung erreicht werden, auch wenn es zunächst ungewöhnlich klingt.
+    </p>
+    <h2>Quellen</h2>
+    <p class="p-3">
+      <a href="https://www.atg-mauertrockenlegung.de/ratgeber-mauerwerkstrockenlegung-kellerabdichtung/falsches-lueften-fuehrt-zu-schimmel-und-hoher-luftfeuchte/" class="link-primary">ATG Gruppe</a><br />
+      <a href="https://www.energie-fachberater.de/heizung-lueftung/lueftung-klima/lueftung/stosslueften-so-lange-sollten-hausbesitzer-wirklich-lueften.php" class="link-primary">Energie-Fachberater</a>
+    </p>
   </div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<!-- jQuery -->
+<script src="/scripts/jQuery.js"></script>
+
 </body>
 </html>

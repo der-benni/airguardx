@@ -285,7 +285,7 @@ function getHourlyParamsOutside(data, count, type) {
     let tempArray = [];
     for (let i = 0; i < count; i++) {
         if (type === 'time') {
-            tempArray[i] = formatTimes(data['hourly'][type][i]) + '0';
+            tempArray[i] = formatTimes(data['hourly'][type][i]);
         } else {
             tempArray[i] = data['hourly'][type][i];
         }

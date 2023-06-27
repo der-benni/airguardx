@@ -43,7 +43,7 @@
     <!-- Navigation End -->
 
     <div class="container bg-white rounded-3 my-3 p-3 shadow position-relative">
-        <h2>Innen</h2>
+        <h2 th:text="${profile}"></h2>
         <div class="p-3 position-absolute top-0 end-0">
             <p class="d-flex align-items-center">
                 <i id="statusIndicator" class="bi"></i> <span id="statusText" class="ps-2"></span>
@@ -164,6 +164,10 @@
                 <canvas id="outsideDay"></canvas>
             </div>
         </div>
+    </div>
+
+    <div class="container bg-white rounded-3 my-3 p-3 shadow position-relative">
+        <p class="m-0 text-center text-secondary">&copy; AirGuardX &#8226; Master-Modul Hardware cyber-physischer Systeme (HCPS) von Benedikt Scholz und Yannik Wolf</p>
     </div>
 
     <!-- Bootstrap JS -->

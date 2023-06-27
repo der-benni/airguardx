@@ -15,7 +15,26 @@ public class IndexController {
     }
 
     @GetMapping("/")
-    public String getIndex() {
+    public String getIndex(Model model) {
+
+        int activeProfile = profileService.getActiveProfile();
+
+        String profileName = "";
+
+        if (activeProfile == 0) {
+            profileName = "Wohn- / Arbeitszimmer";
+        } else if (activeProfile == 1) {
+            profileName = "Schlafzimmer";
+        } else if (activeProfile == 2) {
+            profileName = "Küche";
+        } else if (activeProfile == 3) {
+            profileName = "Badezimmer";
+        } else {
+            profileName = "Keller";
+        }
+
+        model.addAttribute("profile", profileName);
+
         return "index";
     }
 

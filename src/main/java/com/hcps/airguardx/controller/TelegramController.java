@@ -37,11 +37,13 @@ public class TelegramController implements TelegramMvcController {
         if (dataModel != null) {
             String temperature = format(dataModel.getTemperature());
             String humidity = format(dataModel.getHumidity());
+            String co2 = format(dataModel.getCo2());
 
             stb.append("Hallo, " + user.firstName() + "!\n\n");
             stb.append("Die aktuellen Daten:\n");
-            stb.append("🌡 " + temperature + "°C\n");
-            stb.append("💧 " + humidity + "%\n");
+            stb.append("🌡 " + temperature + " °C\n");
+            stb.append("💧 " + humidity + " %\n");
+            stb.append("🌫 " + co2 + " ppm\n");
         }
 
         return new SendMessage(chat.id(), stb.toString());

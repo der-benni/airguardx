@@ -6,9 +6,6 @@ import com.hcps.airguardx.repository.DataDayRepository;
 import com.hcps.airguardx.repository.DataRepository;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 @Service
 public class DataService {
 
@@ -19,7 +16,6 @@ public class DataService {
         this.dataRepository = dataRepository;
         this.dataDayRepository = dataDayRepository;
     }
-
 
     public DataModel getLatestRecord() {
         return dataRepository.findFirst1ByOrderByIdDesc();
@@ -39,21 +35,13 @@ public class DataService {
 
         if (latest != null) {
 
-            try {
+            String oldDate = latest.getTimestamp().substring(11, 13);
+            String newDate = data.getTimestamp().substring(11, 13);
 
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS");
-                SimpleDateFormat hourFormat = new SimpleDateFormat("HH");
-
-                String oldDate = hourFormat.format(dateFormat.parse(latest.getTimestamp()));
-                String newDate = hourFormat.format(dateFormat.parse(data.getTimestamp()));
-
-                if (!oldDate.equals(newDate)) {
-                    this.dataDayRepository.save(convert(data));
-                }
-
-            } catch (ParseException e) {
-                e.printStackTrace();
+            if (!oldDate.equals(newDate)) {
+                this.dataDayRepository.save(convert(data));
             }
+
         } else {
             this.dataDayRepository.save(convert(data));
         }

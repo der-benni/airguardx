@@ -32,3 +32,11 @@ i {
 .shadow {
     box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
 }
+
+.chart-container {
+    padding: 0 12px;
+    position: relative;
+    margin: auto;
+    height: 300px;
+    width: 100%;
+}

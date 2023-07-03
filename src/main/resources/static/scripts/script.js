@@ -307,7 +307,7 @@ function createChart(elem, labels, temperature, humidity, co2) {
                     },
                 }
             },
-            aspectRatio: 4
+            maintainAspectRatio: false,
         }
     });
 

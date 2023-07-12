@@ -23,6 +23,25 @@ public class ProfileService {
         return this.activeProfile;
     }
 
+    public String getActiveProfileName() {
+
+        String profileName = "";
+
+        if (this.activeProfile == 0) {
+            profileName = "Wohn- / Arbeitszimmer";
+        } else if (this.activeProfile == 1) {
+            profileName = "Schlafzimmer";
+        } else if (this.activeProfile == 2) {
+            profileName = "Küche";
+        } else if (this.activeProfile == 3) {
+            profileName = "Badezimmer";
+        } else {
+            profileName = "Keller";
+        }
+
+        return profileName;
+    }
+
     public void setActiveProfile(int activeProfile) {
         this.activeProfile = activeProfile;
     }

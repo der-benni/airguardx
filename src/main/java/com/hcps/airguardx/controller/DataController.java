@@ -32,6 +32,8 @@ public class DataController {
         data.setHumidity(obj.getFloat("humidity"));
         data.setTimestamp(obj.getString("timestamp"));
 
+        System.out.println(data);
+
         dataService.setParameters(data);
         dataService.setDayData(data);
 

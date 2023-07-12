@@ -23,13 +23,13 @@ public class SpringConfig {
         this.statusService = statusService;
     }
 
-    // check every 5 minutes if sensor is sending data
-    @Scheduled(fixedRate = 300000)
+    // check every 10 minutes if sensor is sending data
+    @Scheduled(fixedRate = 600000)
     public void scheduleFixedRateTask() {
 
         if (dataModel != null && this.dataModel.toString().equals(this.dataService.getLatestRecord().toString())) {
             // todo: enable sending data
-            // this.telegramService.sendToTelegram("SensorNotSending!");
+            // this.telegramService.sendToTelegram("Achtung: Der Sensor sendet aktuell keine Daten!");
             this.statusService.setSensorStatus(false);
         } else {
             this.statusService.setSensorStatus(true);

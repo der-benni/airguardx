@@ -31,7 +31,7 @@ public class DataService {
 
     public void setDayData(DataModel data) {
 
-        DataDayModel latest = this.dataDayRepository.findFirst1ByOrderByIdDesc();
+        DataModel latest = this.dataRepository.findFirst1ByOrderByIdDesc();
 
         if (latest != null) {
 

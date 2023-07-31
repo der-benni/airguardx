@@ -29,7 +29,7 @@ def send_data():
         'co2': co2,
         'timestamp': datetime.datetime.now().isoformat()
     }
-    x = requests.post(url, json=jsonData, auth=HTTPBasicAuth('****', '****'))
+    x = requests.post(url, json=jsonData, auth=HTTPBasicAuth('admin', 'admin'))
     time.sleep(5)  # 5 Sekunden warten, um aktuelle Werte beim roomStatus-Abruf zu berücksichtigen
 
 # Funktion für LED-Blinken
@@ -89,5 +89,19 @@ except requests.exceptions.RequestException:
     lower_temperature_threshold, upper_temperature_threshold, lower_humidity_threshold, upper_humidity_threshold, co2_threshold = read_thresholds()
     if temperature > upper_temperature_threshold or temperature < lower_temperature_threshold or humidity > upper_humidity_threshold or humidity < lower_humidity_threshold or co2 > co2_threshold:
         blink_led()
+
+# Schwellwerte abfragen und speichern
+try:
+    profile_values_response = requests.get('http://141.147.6.122:8080/getProfileValues')
+    profile_values = profile_values_response.json()
+    lower_temperature_threshold = profile_values.get('lower_temperature_threshold', 20.0)  # Standardwert: 20 Grad Celsius
+    upper_temperature_threshold = profile_values.get('upper_temperature_threshold', 25.0)  # Standardwert: 25 Grad Celsius
+    lower_humidity_threshold = profile_values.get('lower_humidity_threshold', 40.0)  # Standardwert: 40 % Luftfeuchtigkeit
+    upper_humidity_threshold = profile_values.get('upper_humidity_threshold', 60.0)  # Standardwert: 60 % Luftfeuchtigkeit
+    co2_threshold = profile_values.get('co2_threshold', 1000.0)  # Standardwert: 1000 ppm CO2
+    save_thresholds(lower_temperature_threshold, upper_temperature_threshold, lower_humidity_threshold, upper_humidity_threshold, co2_threshold)
+except requests.exceptions.RequestException:
+    # Falls das Abrufen der Schwellwerte nicht möglich ist, verwende die zuvor gespeicherten Werte
+    pass
 
 GPIO.cleanup()

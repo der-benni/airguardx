@@ -28,8 +28,7 @@ public class SpringConfig {
     public void scheduleFixedRateTask() {
 
         if (dataModel != null && this.dataModel.toString().equals(this.dataService.getLatestRecord().toString())) {
-            // todo: enable sending data
-            // this.telegramService.sendToTelegram("Achtung: Der Sensor sendet aktuell keine Daten!");
+            this.telegramService.sendToTelegram("⚠️ Der Sensor sendet aktuell keine Daten!");
             this.statusService.setSensorStatus(false);
         } else {
             this.statusService.setSensorStatus(true);

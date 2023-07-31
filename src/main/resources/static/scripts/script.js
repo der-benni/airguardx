@@ -42,17 +42,14 @@ function setSensorStatus() {
         type: "GET",
         success: function (data) {
 
-            $('#statusIndicator').removeClass();
             $('#statusText').removeClass();
 
             if (data.status === 1) {
-                $('#statusText').text('Sensor online');
+                $('#statusText').text('Sensor ON');
                 $('#statusText').addClass('ps-2 text-success');
-                $('#statusIndicator').addClass('bi bi-wifi text-success');
             } else {
-                $('#statusText').text('Sensor offline');
+                $('#statusText').text('Sensor OFF');
                 $('#statusText').addClass('ps-2 text-danger');
-                $('#statusIndicator').addClass('bi bi-wifi text-danger');
             }
 
         }

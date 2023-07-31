@@ -4,6 +4,7 @@ import com.hcps.airguardx.model.DataDayModel;
 import com.hcps.airguardx.model.DataModel;
 import com.hcps.airguardx.service.DataService;
 import com.hcps.airguardx.service.StatusService;
+import com.hcps.airguardx.service.TelegramService;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +15,12 @@ public class DataController {
 
     private final DataService dataService;
     private final StatusService statusService;
+    private final TelegramService telegramService;
 
-    public DataController(DataService dataService, StatusService statusService) {
+    public DataController(DataService dataService, StatusService statusService, TelegramService telegramService) {
         this.dataService = dataService;
         this.statusService = statusService;
+        this.telegramService = telegramService;
     }
 
     @PostMapping("/parameters")
@@ -32,12 +35,13 @@ public class DataController {
         data.setHumidity(obj.getFloat("humidity"));
         data.setTimestamp(obj.getString("timestamp"));
 
-        System.out.println(data);
-
         dataService.setParameters(data);
         dataService.setDayData(data);
-
         this.statusService.setSensorStatus(true);
+
+        if (statusService.isValueCritical()) {
+            telegramService.sendToTelegram("⚠️ Handlungsbedarf - Wertüberschreitung!");
+        }
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
